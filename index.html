@@ -9,84 +9,154 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-	<div class="topbar">
-		<div class="fill">
-			<div class="container">
-				<h3><a href="/">Notif'BOOK</a></h3>
-				<ul>
-					<li><a href="#">Calendrier</a></li>
-					<li><a href="#">Envoyer une Notification</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="#">Historique</a></li>
-					<li><button data-url="demo-modal.html" id="demo">Click me</button></li>
-				</ul>
-				<form action="#" >
-					<input type="text" placeholder="Recherche un article">
-				</form>
-			</div>
-		</div>
-	</div>
+	<div class="container" ng-show="divConnexion">
 
-	<div class="container" >
-		<div class="hero-unit">
+		<div class="hero-unit" >
 			<h1>Notif'BOOK</h1>
 			<p>Tenir informé ses amis distant en temps réel !</p>
 			<p><a href="#" class="btn primary large">En savoir plus</a></p>
-			<div id="formPseudo">
-			</div>
-		</div>
+      <!-- <div id="formPseudo">
+  </div> -->
+  <ul class="nav nav-tabs" id="menuConnexion">
+  	<li class="active" id="btnLogin"><a data-toggle="tab">Login</a></li>
+  	<li id="btnAccount" class=""><a data-toggle="tab">Create Account</a></li>
+  </ul>
+  <br>
 
-		<p>&nbsp;</p>
+  <div id="divLogin" ng-controller="ConnexionController" >
+  	<form novalidate class="form-stacked" id="sendLogin">
+  		<fieldset>
+  			<div class="clearfix">
+  				<label>Pseudo de connection</label>
+  				<div class="input" >
+  					<input type="text" id="pseudoL" ng-model="user.pseudo">
+  				</div>
+  			</div>
 
-		<div class="row" id="divAccueil">
-			<div class="span11">
+  			<div class="clearfix">
+  				<label>Mot de passe</label>
+  				<div class="input" >
+  					<input type="password" id="passL" ng-model="user.mdp">
+  				</div>
+  			</div>
 
-				<p>&nbsp;</p>
-				<div class="page-header">
-					<h1>Envoyer une Notification</h1>
-				</div>
+  			<div class="actions">
+  				<input type="submit" value="Envoyer" class="btn primary" ng-click="update(user)">
+  				<input type="reset" class="btn">
+  			</div>
+  		</fieldset>
+  	</form>
+  </div>
 
-				<form action="" class="form-stacked" id="sendForm">
-					<fieldset>
-						<div class="clearfix">
-							<label>Titre</label>
-							<div class="input" >
-								<input type="text" id="titreNotif">
-							</div>
-						</div>
+  <div id="divAccount">
+  	<form class="form-stacked" id="sendAccount">
+  		<fieldset>
+  			<div class="clearfix">
+  				<label>Pseudo</label>
+  				<div class="input" >
+  					<input type="text" id="pseudoA">
+  				</div>
+  			</div>
 
-						<div class="clearfix">
-							<label>Message</label>
-							<div class="input">
-								<textarea name="" id="textNotif" cols="30" raw="10"></textarea>
-								<span class="help-block">Pas de code HTML dans le message</span>
-							</div>
-						</div>
-						<div class="actions">
-							<input type="submit" value="Envoyer" class="btn primary" id="validerNotif">
-							<input type="reset" class="btn">
-						</div>
-					</fieldset>
-				</form>
+  			<div class="clearfix">
+  				<label>Mot de passe</label>
+  				<div class="input" >
+  					<input type="text" id="passA">
+  				</div>
+  			</div>
 
 
-			</div>
+  			<div class="actions">
+  				<input type="submit" value="Envoyer" class="btn primary">
+  				<input type="reset" class="btn">
+  			</div>
+  		</fieldset>
+  	</form>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="topbar" ng-show="divMenu">
+	<div class="fill">
+		<div class="container">
+			<h3><a href="/">Notif'BOOK</a></h3>
+			<ul>
+				<li><a href="#">Calendrier</a></li>
+				<li><a href="#">Envoyer une Notification</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Historique</a></li>
+				<li><button data-url="demo-modal.html" id="demo">Click me</button></li>
+			</ul>
+			<form action="#" >
+				<input type="text" placeholder="Recherche un article">
+			</form>
 		</div>
 	</div>
-	<div class ="notifications" id="notifications" ng-controller="MainController">
-		<div id="scrollNotif" style="display: block;">
-			<div id="notification" class ="notification add" ng-repeat= "msg in messages track by $index">
-				<div class ="left" >
-					<div class="icon">
-						<img id="imgIcone" src="img/icone.png"></img>
+</div>
+
+<div class="container" ng-show="divInfo" >
+	<div class="hero-unit">
+		<h1>Notif'BOOK</h1>
+		<p>Tenir informé ses amis distant en temps réel !</p>
+		<p><a href="#" class="btn primary large">En savoir plus</a></p>
+		<div id="formPseudo">
+		</div>
+	</div>
+
+	<p>&nbsp;</p>
+	<div class="row" id="divAccueil" ng-show="divAccueil">
+		<div class="span11">
+
+			<p>&nbsp;</p>
+			<div class="page-header">
+				<h1>Envoyer une Notification</h1>
+			</div>
+
+			<form action="" class="form-stacked" id="sendForm">
+				<fieldset>
+					<div class="clearfix">
+						<label>Titre</label>
+						<div class="input" >
+							<input type="text" id="titreNotif">
+						</div>
 					</div>
-				</div>
-				<div class = "right">
-					<h2>{{msg.message.title}}</h2>
-					<p>{{msg.message.content}}</p>
-					<p id="pidPseudo">De:{{msg.message.pseudo}} </p>
+
+					<div class="clearfix">
+						<label>Message</label>
+						<div class="input">
+							<textarea name="" id="textNotif" cols="30" raw="10"></textarea>
+							<span class="help-block">Pas de code HTML dans le message</span>
+						</div>
+					</div>
+					<div class="actions">
+						<input type="submit" value="Envoyer" class="btn primary" id="validerNotif">
+						<input type="reset" class="btn">
+					</div>
+				</fieldset>
+			</form>
+
+
+		</div>
+	</div>
+</div>
+<div class ="notifications" id="notifications" ng-controller="MainController" ng-show="divNotifications">
+	<div id="scrollNotif" style="display: block;">
+		<div id="notification" class ="notification add" ng-repeat= "msg in messages track by $index">
+			<div class ="left" >
+				<div class="icon">
+					<img id="imgIcone" src="img/icone.png"></img>
 				</div>
 			</div>
+			<div class = "right">
+				<h2>{{msg.message.title}}</h2>
+				<p>{{msg.message.content}}</p>
+				<p id="pidPseudo">De:{{msg.message.pseudo}} </p>
+			</div>
+		</div>
 				<!-- <ul>
 					<li ng-repeat= "msg in messages track by $index">
 						{{msg}}
