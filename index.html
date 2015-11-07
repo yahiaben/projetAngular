@@ -15,162 +15,160 @@
 			<h1>Notif'BOOK</h1>
 			<p>Tenir informé ses amis distant en temps réel !</p>
 			<p><a href="#" class="btn primary large">En savoir plus</a></p>
-      <!-- <div id="formPseudo">
-  </div> -->
-  <ul class="nav nav-tabs" id="menuConnexion">
-  	<li class="active" id="btnLogin"><a data-toggle="tab">Login</a></li>
-  	<li id="btnAccount" class=""><a data-toggle="tab">Create Account</a></li>
-  </ul>
-  <br>
-
-  <div id="divLogin" ng-controller="ConnexionController" >
-  	<form novalidate class="form-stacked" id="sendLogin">
-  		<fieldset>
-  			<div class="clearfix">
-  				<label>Pseudo de connection</label>
-  				<div class="input" >
-  					<input type="text" id="pseudoL" ng-model="user.pseudo">
-  				</div>
-  			</div>
-
-  			<div class="clearfix">
-  				<label>Mot de passe</label>
-  				<div class="input" >
-  					<input type="password" id="passL" ng-model="user.mdp">
-  				</div>
-  			</div>
-
-  			<div class="actions">
-  				<input type="submit" value="Envoyer" class="btn primary" ng-click="update(user)">
-  				<input type="reset" class="btn">
-  			</div>
-  		</fieldset>
-  	</form>
-  </div>
-
-  <div id="divAccount">
-  	<form class="form-stacked" id="sendAccount">
-  		<fieldset>
-  			<div class="clearfix">
-  				<label>Pseudo</label>
-  				<div class="input" >
-  					<input type="text" id="pseudoA">
-  				</div>
-  			</div>
-
-  			<div class="clearfix">
-  				<label>Mot de passe</label>
-  				<div class="input" >
-  					<input type="text" id="passA">
-  				</div>
-  			</div>
-
-
-  			<div class="actions">
-  				<input type="submit" value="Envoyer" class="btn primary">
-  				<input type="reset" class="btn">
-  			</div>
-  		</fieldset>
-  	</form>
-  </div>
-</div>
-</div>
-
-
-
-
-
-<div class="topbar" ng-show="divMenu">
-	<div class="fill">
-		<div class="container">
-			<h3><a href="/">Notif'BOOK</a></h3>
-			<ul>
-				<li><a href="#">Calendrier</a></li>
-				<li><a href="#">Envoyer une Notification</a></li>
-				<li><a href="#">Contact</a></li>
-				<li><a href="#">Historique</a></li>
-				<li><button data-url="demo-modal.html" id="demo">Click me</button></li>
+			<ul class="nav nav-tabs" id="menuConnexion" ng-controller = "AffichageConnexionController">
+				<li class="active" id="btnLogin" ><a data-toggle="tab" ng-click="afficherLogin()">Login</a></li>
+				<li id="btnAccount" class=""><a data-toggle="tab" ng-click="afficherCreateAccount()">Create Account</a></li>
 			</ul>
-			<form action="#" >
-				<input type="text" placeholder="Recherche un article">
-			</form>
-		</div>
-	</div>
-</div>
+			<br>
+			<div ng-controller="ConnexionLoginController">
+				<div id="divLogin" >
+					<form novalidate class="form-stacked" id="sendLogin">
+						<fieldset>
+							<div class="clearfix">
+								<label>Pseudo de connection</label>
+								<div class="input" >
+									<input type="text" id="pseudoL" ng-model="user.pseudo">
+								</div>
+							</div>
 
-<div class="container" ng-show="divInfo" >
-	<div class="hero-unit">
-		<h1>Notif'BOOK</h1>
-		<p>Tenir informé ses amis distant en temps réel !</p>
-		<p><a href="#" class="btn primary large">En savoir plus</a></p>
-		<div id="formPseudo">
-		</div>
-	</div>
+							<div class="clearfix">
+								<label>Mot de passe</label>
+								<div class="input" >
+									<input type="password" id="passL" ng-model="user.mdp">
+								</div>
+							</div>
 
-	<p>&nbsp;</p>
-	<div class="row" id="divAccueil" ng-show="divAccueil">
-		<div class="span11">
-
-			<p>&nbsp;</p>
-			<div class="page-header">
-				<h1>Envoyer une Notification</h1>
-			</div>
-
-			<form action="" class="form-stacked" id="sendForm">
-				<fieldset>
-					<div class="clearfix">
-						<label>Titre</label>
-						<div class="input" >
-							<input type="text" id="titreNotif">
-						</div>
-					</div>
-
-					<div class="clearfix">
-						<label>Message</label>
-						<div class="input">
-							<textarea name="" id="textNotif" cols="30" raw="10"></textarea>
-							<span class="help-block">Pas de code HTML dans le message</span>
-						</div>
-					</div>
-					<div class="actions">
-						<input type="submit" value="Envoyer" class="btn primary" id="validerNotif">
-						<input type="reset" class="btn">
-					</div>
-				</fieldset>
-			</form>
-
-
-		</div>
-	</div>
-</div>
-<div class ="notifications" id="notifications" ng-controller="MainController" ng-show="divNotifications">
-	<div id="scrollNotif" style="display: block;">
-		<div id="notification" class ="notification add" ng-repeat= "msg in messages track by $index">
-			<div class ="left" >
-				<div class="icon">
-					<img id="imgIcone" src="img/icone.png"></img>
+							<div class="actions">
+								<input type="submit" value="Envoyer" class="btn primary" ng-click="update(user)">
+								<input type="reset" class="btn">
+							</div>
+						</fieldset>
+					</form>
 				</div>
 			</div>
-			<div class = "right">
-				<h2>{{msg.message.title}}</h2>
-				<p>{{msg.message.content}}</p>
-				<p id="pidPseudo">De:{{msg.message.pseudo}} </p>
+			<div ng-controller="ConnexionCreateLoginController">
+				<div id="divAccount">
+					<form novalidate class="form-stacked" id="sendAccount">
+						<fieldset>
+							<div class="clearfix">
+								<label>Pseudo</label>
+								<div class="input" >
+									<input type="text" id="pseudoA" ng-model="newUser.pseudo">
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<label>Mot de passe</label>
+								<div class="input" >
+									<input type="password" id="passA" ng-model="newUser.mdp">
+								</div>
+							</div>
+
+
+							<div class="actions">
+								<input type="submit" value="Envoyer" class="btn primary" ng-click="update(newUser)">
+								<input type="reset" class="btn">
+							</div>
+						</fieldset>
+					</form>
+				</div>
 			</div>
 		</div>
-				<!-- <ul>
-					<li ng-repeat= "msg in messages track by $index">
-						{{msg}}
-					</li>
-				</ul> -->
+	</div>
+
+
+
+
+
+	<div class="topbar" ng-show="divMenu">
+		<div class="fill">
+			<div class="container">
+				<h3><a href="/">Notif'BOOK</a></h3>
+				<ul>
+					<li><a href="#">Calendrier</a></li>
+					<li><a href="#">Envoyer une Notification</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">Historique</a></li>
+					<li><button data-url="demo-modal.html" id="demo">Click me</button></li>
+				</ul>
+				<form action="#" >
+					<input type="text" placeholder="Recherche un article">
+				</form>
 			</div>
 		</div>
+	</div>
+	<div ng-controller="NotifController">
+		<div class="container" ng-show="divInfo" >
+			<div class="hero-unit">
+				<h1>Notif'BOOK</h1>
+				<p>Tenir informé ses amis distant en temps réel !</p>
+				<p><a href="#" class="btn primary large">En savoir plus</a></p>
+				<div id="formPseudo">
+				</div>
+			</div>
 
+			<p>&nbsp;</p>
 
-		<script src="scripts/socket.io.js"></script>
-		<script type="text/javascript" src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-		<script src = "scripts/mainController.js"></script>
+			<div class="row" id="divAccueil" ng-show="divAccueil">
+				<div class="span11">
 
-		<script type="text/javascript" src="scripts/cobra.js"></script>
-		<script type="text/javascript" src="scripts/cobraNotif.js"></script>
-	</body>
-	</html>
+					<p>&nbsp;</p>
+					<div class="page-header">
+						<h1>Envoyer une Notification</h1>
+					</div>
+
+					<form novalidate class="form-stacked" id="sendForm">
+						<fieldset>
+							<div class="clearfix">
+								<label>Titre</label>
+								<div class="input" >
+									<input type="text" id="titreNotif" ng-model="notification.titre">
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<label>Message</label>
+								<div class="input">
+									<textarea name="" id="textNotif" cols="30" raw="10" ng-model="notification.message"></textarea>
+									<span class="help-block">Pas de code HTML dans le message</span>
+								</div>
+							</div>
+							<div class="actions">
+								<input type="submit" value="Envoyer" class="btn primary" id="validerNotif" ng-click="EnvoyerMsg(notification)">
+								<input type="reset" class="btn">
+							</div>
+						</fieldset>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		<div class ="notifications" id="notifications" ng-show="divNotifications">
+			<div id="scrollNotif" style="display: block;">
+				<div id="notification" class ="notification add" ng-repeat= "msg in messages track by $index">
+					<div class ="left" >
+						<div class="icon">
+							<img id="imgIcone" src="img/icone.png"></img>
+						</div>
+					</div>
+					<div class = "right">
+						<h2>{{msg.message.title}}</h2>
+						<p>{{msg.message.content}}</p>
+						<p id="pidPseudo">De:{{msg.message.pseudo}} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/socket.io.js"></script>
+	<script type="text/javascript" src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src = "scripts/mainController.js"></script>
+	<script src = "scripts/affichageConnexionController.js"></script>
+	<script src = "scripts/connexionLoginController.js"></script>
+	<script src = "scripts/connexionCreateLoginController.js"></script>
+
+	<script src = "scripts/NotifController.js"></script>
+	<script type="text/javascript" src="scripts/cobra.js"></script>
+	<script type="text/javascript" src="scripts/cobraNotif.js"></script>
+</body>
+</html>
