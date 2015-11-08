@@ -35,6 +35,11 @@ $scope.getMessages = function(){
 
 $scope.getMessages();
 
+$scope.reset = function() {
+        console.log("je rentre ici ");
+        $scope.titre = "";
+        $scope.message = "";
+      };
 
 $scope.EnvoyerMsg = function(notification) {
 
@@ -42,7 +47,8 @@ $scope.EnvoyerMsg = function(notification) {
         $scope.titre = angular.copy(notification.titre);
         $scope.message= angular.copy(notification.message);
         cobra.sendMessage({pseudo: this.pseudo, title: $scope.titre, content: $scope.message},room,true);
-        var jsonMsg = {
+        
+        /*var jsonMsg = {
           "room": {
             room
           },
@@ -52,7 +58,9 @@ $scope.EnvoyerMsg = function(notification) {
             "title" : $scope.titre
           }
         };
-        //$scope.messages.unshift(jsonMsg);
+        $scope.messages.unshift(jsonMsg);*/
       };
+
+
     }]);
 
