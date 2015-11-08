@@ -1,6 +1,6 @@
 app.controller('ConnexionLoginController', ['$scope', '$rootScope','$http', function($scope, $rootScope, $http) {
 
-  $scope.update = function(user) {
+  $scope.traiterConnexion = function(user) {
         //On recupere la valeur des champ et on les enregistre dans le scoop
         $rootScope.pseudo = angular.copy(user.pseudo);
         $scope.pseudo = angular.copy(user.pseudo);
@@ -14,6 +14,8 @@ app.controller('ConnexionLoginController', ['$scope', '$rootScope','$http', func
             var contenuBDD = (JSON.parse(data.Events[i].content));
             mdp = contenuBDD.message.mdp;
             pseudo = contenuBDD.message.pseudo;
+            console.log(pseudo + " " +mdp);
+            //console.log($rootScope.lesPseudos);
             if($scope.pseudo == pseudo && $scope.mdp == mdp){
               $rootScope.divAccueil = true;
               $rootScope.divNotifications = true;
@@ -23,7 +25,9 @@ app.controller('ConnexionLoginController', ['$scope', '$rootScope','$http', func
               return true;
             }
           }
+          console.log($rootScope.lesPseudos);
           alert("pseudo ou mot de passe non valide");
+          return false;
         });
         
       };

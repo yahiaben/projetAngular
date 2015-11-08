@@ -39,7 +39,7 @@
 							</div>
 
 							<div class="actions">
-								<input type="submit" value="Envoyer" class="btn primary" ng-click="update(user)">
+								<input type="submit" value="Envoyer" class="btn primary" ng-click="traiterConnexion(user)">
 								<input type="reset" class="btn">
 							</div>
 						</fieldset>
@@ -91,9 +91,16 @@
 					<li><a href="#">Historique</a></li>
 					<li><button data-url="demo-modal.html" id="demo">Click me</button></li>
 				</ul>
-				<form action="#" >
-					<input type="text" placeholder="Recherche un article">
-				</form>
+				<div >
+					<form action="#" >
+						<input type="text" placeholder="Recherche un ami" ng-model="searchFriend" autofocus>
+						<ul>
+							<li class="friend" ng-repeat="friend in lesPseudos track by $index | filter:searchFriend">
+								{{friend}}
+							</li>
+						</ul>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -166,9 +173,10 @@
 	<script src = "scripts/affichageConnexionController.js"></script>
 	<script src = "scripts/connexionLoginController.js"></script>
 	<script src = "scripts/connexionCreateLoginController.js"></script>
-
 	<script src = "scripts/NotifController.js"></script>
+
 	<script type="text/javascript" src="scripts/cobra.js"></script>
 	<script type="text/javascript" src="scripts/cobraNotif.js"></script>
+	<script src = "scripts/rechercherController.js"></script>
 </body>
 </html>

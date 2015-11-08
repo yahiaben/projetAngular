@@ -14,6 +14,7 @@ app.controller('ConnexionCreateLoginController', ['$scope', '$rootScope','$http'
             var contenuBDD = (JSON.parse(data.Events[i].content));
             mdp = contenuBDD.message.mdp;
             pseudo = contenuBDD.message.pseudo;
+
             if($scope.pseudo == pseudo){
               alert("pseudo non disponible");
               return false;

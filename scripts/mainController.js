@@ -7,5 +7,6 @@ app.run(function($rootScope) {
   $rootScope.divMenu = false;
   $rootScope.divConnexion = true;
   $rootScope.pseudo = "";
+  $rootScope.lesPseudos =[];
 });
 
