@@ -43,6 +43,11 @@ $scope.getMessages = function(){
 
 $scope.getMessages();
 
+$scope.reset = function() {
+        console.log("je rentre ici ");
+        $scope.titre = "";
+        $scope.message = "";
+      };
 
 $scope.EnvoyerMsg = function(notification) {
 
@@ -52,6 +57,9 @@ $scope.EnvoyerMsg = function(notification) {
         cobra.sendMessage({pseudo: this.pseudo, title: $scope.titre, content: $scope.message, receivers: $scope.userSelected},room,true);
         $scope.userSelected = [];
         
+       
       };
+
+
     }]);
 
