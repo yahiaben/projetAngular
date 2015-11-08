@@ -1,6 +1,6 @@
 var cobra = new Cobra();
 
-var room = "notifications6-yahia";
+var room = "notification7Final";
 var roomPseudo = 'BDDPseudo4'
 var socketId;
 var apiUrl = 'http://cobra-framework.com:3000/api/events/' + room;

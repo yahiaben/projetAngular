@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="css/twitter.css"> 
 	<link rel="stylesheet" href="css/style.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" rel="stylesheet">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
@@ -89,17 +90,9 @@
 					<li><a href="#">Envoyer une Notification</a></li>
 					<li><a href="#">Contact</a></li>
 					<li><a href="#">Historique</a></li>
-					<li><button data-url="demo-modal.html" id="demo">Click me</button></li>
 				</ul>
 				<div >
-					<form action="#" >
-						<input type="text" placeholder="Recherche un ami" ng-model="searchFriend" autofocus>
-						<ul>
-							<li class="friend" ng-repeat="friend in lesPseudos track by $index | filter:searchFriend">
-								{{friend}}
-							</li>
-						</ul>
-					</form>
+					
 				</div>
 			</div>
 		</div>
@@ -110,6 +103,7 @@
 				<h1>Notif'BOOK</h1>
 				<p>Tenir informé ses amis distant en temps réel !</p>
 				<p><a href="#" class="btn primary large">En savoir plus</a></p>
+				<p>Bienvenue à toi : {{pseudo}}</p>
 				<div id="formPseudo">
 				</div>
 			</div>
@@ -122,6 +116,10 @@
 					<p>&nbsp;</p>
 					<div class="page-header">
 						<h1>Envoyer une Notification</h1>
+						<select chosen multiple
+							    options="users"
+							  ng-model="userSelected" ng-options="user as user for user in users">
+						</select>
 					</div>
 
 					<form novalidate class="form-stacked" id="sendForm">
@@ -168,7 +166,10 @@
 		</div>
 	</div>
 	<script src="scripts/socket.io.js"></script>
-	<script type="text/javascript" src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="lib/angular-chosen.js"></script>
 	<script src = "scripts/mainController.js"></script>
 	<script src = "scripts/affichageConnexionController.js"></script>
 	<script src = "scripts/connexionLoginController.js"></script>

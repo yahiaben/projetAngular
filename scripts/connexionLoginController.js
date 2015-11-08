@@ -10,11 +10,14 @@ app.controller('ConnexionLoginController', ['$scope', '$rootScope','$http', func
           $scope.messages = [];
           var mdp;
           var pseudo;
+          var connexionOK = false;
+
           for (var i = 0; i < data.Events.length; i++) {
             var contenuBDD = (JSON.parse(data.Events[i].content));
             mdp = contenuBDD.message.mdp;
             pseudo = contenuBDD.message.pseudo;
-            console.log(pseudo + " " +mdp);
+            $rootScope.lesPseudos.push(pseudo);
+            //console.log(pseudo + " " +mdp);
             //console.log($rootScope.lesPseudos);
             if($scope.pseudo == pseudo && $scope.mdp == mdp){
               $rootScope.divAccueil = true;
@@ -22,11 +25,12 @@ app.controller('ConnexionLoginController', ['$scope', '$rootScope','$http', func
               $rootScope.divInfo = true;
               $rootScope.divMenu = true;
               $rootScope.divConnexion = false;
-              return true;
+              connexionOK = true;
             }
           }
-          console.log($rootScope.lesPseudos);
-          alert("pseudo ou mot de passe non valide");
+          //console.log($rootScope.lesPseudos);
+          if(!connexionOK)
+            alert("pseudo ou mot de passe non valide");
           return false;
         });
         

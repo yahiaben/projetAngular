@@ -1,5 +1,4 @@
-var app = angular.module('notifApp',[]);
-
+var app = angular.module('notifApp', ['angular.chosen']);
 app.run(function($rootScope) {
   $rootScope.divAccueil = false;
   $rootScope.divNotifications = false;
