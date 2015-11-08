@@ -26,7 +26,7 @@ $scope.getMessages = function(){
    }
  })
   .then(function (data) {
-    setTimeout(function() {$scope.getMessages(),5000});
+    setTimeout(function() {$scope.getMessages(),500});
     //return promise;
         // data is the original server response object, NOT 'a new value'
         // data.data are the things from the API
@@ -52,7 +52,7 @@ $scope.EnvoyerMsg = function(notification) {
             "title" : $scope.titre
           }
         };
-        $scope.messages.unshift(jsonMsg);
+        //$scope.messages.unshift(jsonMsg);
       };
     }]);
 
