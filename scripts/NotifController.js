@@ -32,7 +32,7 @@ $scope.getMessages = function(){
      var tabReceiver = contenuMsg.message.receivers;
      var forMe = tabReceiver.indexOf($rootScope.pseudo);
      
-     if($rootScope.pseudo == pseudo || forMe != -1)
+     if($rootScope.pseudo == pseudo || forMe != -1 || tabReceiver.length == 0)
       $scope.messages.push(contenuMsg);
    }
  })
